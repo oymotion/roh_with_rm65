@@ -1,4 +1,4 @@
-# 手势控制 ROHand
+# 千手观音demo（多设备组合动作）
 
 ## 准备
 
@@ -7,7 +7,7 @@
 进入演示项目目录，例如：
 
 ```SHELL
-cd glove_ctrled_rohand_on_rm65
+cd avalokesvara
 ```
 
 安装依赖的python库：
@@ -18,7 +18,7 @@ pip install -r requirements.txt
 
 ## 运行
 
-打开`gesture_ctrled_hand_on_rm65.py`并修改端口和设备地址，例如：
+打开`avalokesvara.py`并修改端口和设备地址，例如：
 
 ```python
 ARM_IP = "192.168.1.18"
@@ -29,7 +29,7 @@ NODE_ID = 2
 运行：
 
 ```python
-python gesture_ctrled_rohand_rm65.py
+python avalokesvara.py
 ```
 
-按'q'退出。
+按'ctrl-c'退出。
