@@ -161,8 +161,25 @@ class RobotArmController:
                 - -4: 四代控制器不支持该接口
             - list[int]: 返回寄存器数据列表，数据类型：int8
         """
-        data_num = int(read_params.num * 2)
-        data = (c_int * data_num)()
-        tag = rm_read_multiple_holding_registers(
-            self.handle, read_params, data)
-        return tag, list(data)
+        if read_params.num > 1:
+            data_num = int(read_params.num * 2)
+            data = (c_int * data_num)()
+            tag = rm_read_multiple_holding_registers(
+                self.handle, read_params, data)
+            return tag, list(data)
+        else:
+            data = (c_int * 2)()
+            tag = rm_read_holding_registers(self.handle, read_params, data)
+            return tag, list(data)
+
+    def Set_Plus_Mode(self):
+        return self.robot.rm_set_rm_plus_mode(115200)
+
+    def Get_Base_info(self):
+        return self.robot.rm_get_rm_plus_base_info()
+
+    def Get_State_info(self):
+        return self.robot.rm_get_rm_plus_state_info()
+
+    def Set_Hand_Follow_pos(self, hand_pos: list[int], block:bool) -> int:
+        return self.robot.rm_set_hand_follow_pos(hand_pos, block)
