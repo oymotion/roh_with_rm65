@@ -54,7 +54,7 @@ def read_registers(robot, address, num, node_id):
         return None
     else:
         for i in range(num):
-            data[i] = (ret[i]) | (ret[i + 1] << 8)
+            data[i] = (ret[2 * i] << 8) | (ret[2 * i + 1])
         return data
 
 def main():
